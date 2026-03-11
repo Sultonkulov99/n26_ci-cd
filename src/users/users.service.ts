@@ -9,6 +9,15 @@ export class UsersService {
         private prisma : PrismaService
     ) { }
 
+    async getAllUsers(){
+        const users = await this.prisma.user.findMany()
+
+        return {
+            success : true,
+            data : users
+        }
+    }
+
     async getOtp(key: any) {
         const session = await this.redisService.get(key.email)
 

@@ -5,6 +5,10 @@ import { UsersService } from './users.service';
 export class UsersController {
     constructor(private readonly userService : UsersService){}
 
+    @Get("all")
+    getAllUsers(){
+        return this.userService.getAllUsers()
+    }
     @Get()
     getOtp(
         @Body() key: any
